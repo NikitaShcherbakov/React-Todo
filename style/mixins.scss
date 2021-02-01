@@ -1,0 +1,28 @@
+@mixin flex ($flex, $direction, $horizontal-alignment, $vertical-alignment) {
+    display: $flex;
+    flex-direction: $direction;
+    justify-content: $horizontal-alignment;
+    align-items: $vertical-alignment;
+}
+
+@mixin font ($type, $size, $indent, $color) {
+    font-family: $type, sans-serif;
+    font-size: $size;
+    line-height: $indent;
+    color: $color;
+}
+@mixin preloader ($name) {
+    display: flex;
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    -webkit-animation-name: $name;
+    animation-name: $name;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}

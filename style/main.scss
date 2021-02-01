@@ -1,0 +1,375 @@
+@import "fonts.scss";
+@import "colors.scss";
+@import "mixins.scss";
+@import "loader.scss";
+@import "modal.scss";
+
+
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+  background: $color-dark-grey;
+  box-sizing: border-box;
+}
+// dfkjsdkljflkjdsklfjsdjfkdsj
+
+.swipeItem {
+  position: relative;
+  overflow: hidden;
+  width: 700px;
+  background: #d6d6d6;
+  margin-bottom: 20px;
+}
+
+.swipeItem-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #0f345a;
+
+  &.animationToZero {
+    transition: left 250ms;
+  }
+}
+
+.swipeList {
+  list-style-type: none;
+}
+
+.swipeList-addButton {
+  font-size: 30px;
+  text-align: center;
+  width: 700px;
+  height: 65px;
+  padding: auto;
+  background-color: white;
+  border: none;
+  outline: 1px solid black;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+// dsklfjsdljfldsjlfsldkf
+
+.wrapper {
+  @include flex(flex, column, flex-start, stretch);
+  width: 100%;
+  margin-top: 40px;
+
+  h1 {
+    @include flex(flex, row, center, center);
+    @include font(RobotoBold, 32px, 32px, $color-light-gray);
+  }
+  .row-1 {
+    @include flex(flex, row, center, center);
+    padding: 25px 40px 0px;
+
+    .edit-project-name {
+      @include font(RobotoMedium, 16px, 16px, $color-dark-grey);
+      max-width: 800px;
+      min-width: 500px;
+      height: 44px;
+      outline: none;
+      border-radius: 10px;
+      border: 1px solid;
+      padding: 0px 25px;
+
+      &::-webkit-input-placeholder {
+        opacity: 1;
+        color: $color-dark-grey;
+      }
+
+      &:focus::-webkit-input-placeholder {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+    }
+    .btn-page {
+      @include font(RobotoMedium, 14px, 14px, $color-light-gray);
+      width: 120px;
+      height: 34px;
+      background: transparent;
+      border: 1px solid $color-light-gray;
+      outline: none;
+      cursor: pointer;
+      margin: 0 25px;
+
+      &:hover {
+        color: $color-pink;
+      }
+    }
+  }
+  .row-2 {
+    @include flex(flex, column, center, center);
+    padding: 45px 45px 0px;
+
+    .color-selection {
+      @include flex(flex, row, center, center);
+      flex-wrap: wrap;
+
+      .item-marker {
+        width: 25px;
+        height: 25px;
+        margin: 0px 10px 10px 0px;
+        border-radius: 50%;
+        position: relative;
+        cursor: pointer;
+
+        &:nth-of-type(1) {
+          background: url("../images/pantone.svg") no-repeat center;
+        }
+        &.checked::after {
+          content: "";
+          position: absolute;
+          left: -4px;
+          top: -4px;
+          height: 33px;
+          width: 33px;
+          border-radius: 50%;
+          background-color: inherit;
+          opacity: 0.36;
+        }
+      }
+    }
+  }
+  .item-marker {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .box-item {
+    @include flex(flex, column, center, center);
+    padding-top: 50px;
+
+    .item-list {
+      @include font(RobotoRegular, 16px, 18px, $color-light-gray);
+      word-break: break-all;
+      text-align: center;
+      width: 700px;
+      border: 1px solid;
+      padding: 10px;
+      border-radius: 5px;
+
+      .wrap-checkbox {
+        width: 60px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .wrap-date {
+        @include flex(flex, row, flex-start, stretch);
+      }
+      .wrap-icon {
+        @include flex(flex, row, space-between, stretch);
+        width: 60px;
+      }
+      .wrap-title > span,
+      .wrap-description > span {
+        display: block;
+        padding: 15px 0px;
+      }
+
+      .task-item-remove {
+        background: url("../images/bin.svg") no-repeat center;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+      }
+      .task-item-edit {
+        background: url("../images/edit.svg") no-repeat center;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+      }
+    }
+  }
+  .delete-item {
+    display: none;
+  }
+  .header {
+    @include flex(flex, row, space-around, center);
+    border: 1px solid $color-light-gray;
+    margin-bottom: 40px;
+
+    .page {
+      @include font(RobotoBold, 32px, 32px, $color-light-gray);
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      padding: 5px;
+      cursor: pointer;
+
+      &:hover {
+        color: $color-pink;
+      }
+      &:nth-of-type(1) {
+        border-right: 2px solid $color-light-gray;
+      }
+      &:nth-of-type(2) {
+        border: none;
+      }
+    }
+  }
+  .check {
+    cursor: pointer;
+    position: relative;
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    -webkit-tap-highlight-color: transparent;
+    transform: translate3d(0, 0, 0);
+
+    input {
+      display: none;
+    }
+    input:checked + svg {
+      stroke: $color-pink;
+      path {
+        stroke-dashoffset: 60;
+        transition: all 0.3s linear;
+      }
+      polyline {
+        stroke-dashoffset: 42;
+        transition: all 0.2s linear;
+        transition-delay: 0.15s;
+      }
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: rgba(#223254, 0.03);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    svg {
+      position: relative;
+      z-index: 1;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke: $color-light-gray;
+      stroke-width: 1.5;
+      transform: translate3d(0, 0, 0);
+      transition: all 0.2s ease;
+    }
+    path {
+      stroke-dasharray: 60;
+      stroke-dashoffset: 0;
+    }
+    polyline {
+      stroke-dasharray: 22;
+      stroke-dashoffset: 66;
+    }
+    &:hover {
+      &:before {
+        opacity: 1;
+      }
+      svg {
+        stroke: $color-pink;
+      }
+    }
+  }
+  .box-switch {
+    @include flex(flex, row, space-around, center);
+    border-top: 2px solid $color-light-gray;
+    border-bottom: 2px solid $color-light-gray;
+    margin-top: 50px;
+
+    .switch-task {
+      @include font(RobotoMedium, 28px, 28px, $color-light-gray);
+      width: 300px;
+      padding: 10px 0;
+      text-align: center;
+      cursor: pointer;
+
+      &:nth-of-type(3) {
+        border-right: none;
+      }
+      &.active {
+        color: $color-pink;
+      }
+    }
+  }
+
+  .box-parser {
+    @include flex(flex, row, center, stretch);
+    z-index: 5;
+    margin-bottom: 20px;
+
+    .content-parser {
+      background: $color-white;
+      max-width: 800px;
+      min-height: 200px;
+      padding: 20px 40px;
+      border-radius: 5px;
+      box-shadow: 0px 2px 5px 0px rgba($color-black, 0.15);
+      
+      .title-parser {
+        @include font(RobotoMedium, 26px, 30px, $color-dark-grey);
+        margin-bottom: 15px;
+      }
+      .text-parser {
+        @include font(RobotoRegular, 18px, 22px, $green);
+      }
+      .box-read-more-parser {
+        @include flex(flex, row, flex-end, stretch);
+        .read-more-parser {
+          @include font(RobotoMedium, 16px, 16px, $color-dark-grey);
+          margin-top: 50px;
+          cursor: pointer;
+          text-decoration: none;
+          border: 2px solid #1a1f25;
+          border-radius: 5px;
+          padding: 8px;
+
+          &:hover {
+            color: $green;
+          }
+        }
+      }
+    }
+  }
+  .box-parser-details {
+    @include flex(flex, row, center, center);
+
+  .box-item-parser {
+      @include flex(flex, column, flex-start, center);
+      background: $color-white;
+      max-width: 1000px;
+      min-height: 500px;
+      padding: 20px 40px;
+      border-radius: 5px;
+      box-shadow: 0px 2px 5px 0px rgba($color-black, 0.15);
+      .parser-item-title {
+        @include font(RobotoMedium, 26px, 30px, $color-dark-grey);
+        margin-bottom: 15px;
+      }
+      .parser-item-content {
+        @include font(RobotoRegular, 18px, 22px, $green);
+        text-align: center;
+      }
+      .parser-item-id {
+        @include font(RobotoMedium, 16px, 16px, $color-dark-grey);
+        margin-top: 25px;
+        cursor: pointer;
+
+        &:hover {
+          color: $green;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,114 @@
+
+.bg-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 20;
+  transition: 0.3s all;
+}
+.preloader {
+  @include flex(flex, row, center, center);
+  height: 100vh;
+}
+
+.preloader_content {
+  @include flex(flex, row, center, center);
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.preloader_first {
+  @include preloader(first);
+  border-bottom: 5px solid #C80000;
+}
+
+.preloader_second {
+  @include preloader(second);
+  border-right: 5px solid #74E868;
+}
+
+.preloader_third {
+  @include preloader(third);
+  border-top: 5px solid #47b8e0;
+}
+
+@-webkit-keyframes first {
+  0% {
+      -webkit-transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+      transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+  }
+
+  100% {
+      -webkit-transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+      transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+  }
+}
+
+
+@keyframes first {
+  0% {
+      -webkit-transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+      transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+  }
+
+  100% {
+      -webkit-transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+      transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+  }
+}
+
+
+@-webkit-keyframes second {
+  0% {
+      -webkit-transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+      transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+  }
+
+  100% {
+      -webkit-transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+      transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+  }
+}
+
+
+@keyframes second {
+  0% {
+      -webkit-transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+      transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+  }
+
+  100% {
+      -webkit-transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+      transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+  }
+}
+
+
+@-webkit-keyframes third {
+  0% {
+      -webkit-transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+      transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+  }
+
+  100% {
+      -webkit-transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+      transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+  }
+}
+
+
+@keyframes third {
+  0% {
+      -webkit-transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+      transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+  }
+
+  100% {
+      -webkit-transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+      transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+  }
+}
