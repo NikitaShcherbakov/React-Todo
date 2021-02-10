@@ -48,7 +48,6 @@
   }
 }
 
-
 @keyframes first {
   0% {
       -webkit-transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
@@ -60,7 +59,6 @@
       transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
   }
 }
-
 
 @-webkit-keyframes second {
   0% {
@@ -74,7 +72,6 @@
   }
 }
 
-
 @keyframes second {
   0% {
       -webkit-transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
@@ -86,7 +83,6 @@
       transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
   }
 }
-
 
 @-webkit-keyframes third {
   0% {

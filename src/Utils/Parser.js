@@ -108,7 +108,6 @@
             let tag = xml.shift();
 
             if (tag.value.indexOf('</') > -1 || tag.name.match(/\/$/)) {
-                // debugger;
                 tag.name = tag.name.replace(/\/$/, '').trim();
                 tag.value = tag.value.substring(0, tag.value.indexOf('</')).trim();
                 xmlTree.push(tag);
@@ -142,27 +141,6 @@
 
         return xmlText;
     }
-
-    // _convertTagToText(tag) {
-    //     let tagText = '<' + tag.name;
-    //     let attributesText = [];
-
-    //     for (let attribute in tag.attributes) {
-    //         tagText += ' ' + attribute + '="' + tag.attributes[attribute] + '"';
-    //     }
-
-    //     if (tag.value.length > 0) {
-    //         tagText += '>' + tag.value;
-    //     } else {
-    //         tagText += '>';
-    //     }
-
-    //     if (tag.children.length === 0) {
-    //         tagText += '</' + tag.name + '>';
-    //     }
-
-    //     return tagText;
-    // }
 
     parseFromString(xmlText) {
         return this._parseFromString(xmlText);

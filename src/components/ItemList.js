@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { dateOfCreation } from "../constants.js";
 
 import Modal from "./Modal";
 import Checkbox from "./Checkbox";
@@ -8,19 +9,19 @@ import SwipeItem from "./Swipe";
 const ItemList = () => {
     const dispatch = useDispatch();
     const filterBy = useSelector((state) => state.filterBy);
-    const items = useSelector((state) => {
+
+    const filterItems = (state) => {
         if (state.filterBy === "Checked" || state.filterBy === "Unchecked") {
             let isChecked = "Checked" === filterBy;
             return state.items.filter(c => c.checked === isChecked);
         } else {
             return state.items.filter(Boolean);
         }
-    })
+    }
+    const items = useSelector((state) => filterItems(state))
+    
     const [isOpen, setOpen] = useState(true);
     const [selectedItem, setSelectedItem] = useState({});
-
-    const date = new Date();
-    const dateOfCreation = date.getFullYear() + '.' + String(date.getMonth() + 1) + '.' + date.getDate() + '.' + date.getHours() + '.' + date.getMinutes();
 
     const deleteItem = (id) => {
         dispatch({ type: "DELETE_ITEM", id });
@@ -43,7 +44,7 @@ const ItemList = () => {
     return (
         <div className="box-item">
             {items.map(({ text, id, selectedColor, checked, description }) => {
-                return <SwipeItem key={`swipeItem-${id}`} onCheck={() => onCheck(id)}>
+                return <SwipeItem key={id} onCheck={() => onCheck(id)}>
                     <div className="item-list" key={id}>
                         <div className="row">
                             <div className="wrap-checkbox">

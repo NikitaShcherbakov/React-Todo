@@ -4,7 +4,6 @@
 @import "loader.scss";
 @import "modal.scss";
 
-
 html,
 body {
   padding: 0px;
@@ -12,7 +11,6 @@ body {
   background: $color-dark-grey;
   box-sizing: border-box;
 }
-// dfkjsdkljflkjdsklfjsdjfkdsj
 
 .swipeItem {
   position: relative;
@@ -352,7 +350,7 @@ body {
       min-height: 500px;
       padding: 20px 40px;
       border-radius: 5px;
-      box-shadow: 0px 2px 5px 0px rgba($color-black, 0.15);
+      box-shadow: 0 2px 5px 0 rgba($color-black, 0.15);
       .parser-item-title {
         @include font(RobotoMedium, 26px, 30px, $color-dark-grey);
         margin-bottom: 15px;
@@ -362,9 +360,8 @@ body {
         text-align: center;
       }
       .parser-item-id {
-        @include font(RobotoMedium, 16px, 16px, $color-dark-grey);
-        margin-top: 25px;
-        cursor: pointer;
+        max-width: 100%;
+        margin: 20px 0;
 
         &:hover {
           color: $green;

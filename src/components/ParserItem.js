@@ -5,9 +5,9 @@ import { searchError } from "../constants.js";
 const ParserItem = (props) => {
     const timestamp = props.match.params.timestamp;
 
-    const item = useSelector((state) => {
-        return state.newArr.filter((item) => item.timestamp === timestamp)[0];
-    })
+    const itemSelector = (state) => state.newArr.filter((item) => item.timestamp === timestamp)[0];
+
+    const item = useSelector((state) => itemSelector(state));
 
     return(
         <div className="box-parser-details">
@@ -17,10 +17,8 @@ const ParserItem = (props) => {
                     <div className="parser-item-content">{item.content}</div>
                     <img src={item.link} className="parser-item-id" />
                     <div className="parser-item-updated">{item.updated}</div>
-                </div>) 
-                : {searchError}}
+                </div>) : {searchError}}
         </div>
-
     )
 }
 

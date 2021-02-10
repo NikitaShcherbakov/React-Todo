@@ -18,9 +18,13 @@ const searchError = {
     code: 404,
     statusText: "Something went wrong"
 }
+const date = new Date();
+const dateOfCreation = date.toJSON().slice(0,10).replace(/-/g,'/') + '/' + date.getHours() + ':' + date.getMinutes();
+
 export {
     colors,
     url,
     queryOptions,
-    searchError
+    searchError,
+    dateOfCreation,
 };

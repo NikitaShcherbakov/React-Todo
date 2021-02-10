@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import TaskMarker from "./TaskMarker";
 import PropTypes from 'prop-types';
+import TaskMarker from "./TaskMarker";
 
 const Modal = (props) => {
   const [selectedTitle, setSelectedTitle] = useState(props.selectedItem?.text);
@@ -28,9 +28,11 @@ const Modal = (props) => {
     props.onUpdate(selectedTitle, selectedColor, selectedDescription);
     isCloseModal();
   };
+
   const onSaveKey = (event) => {
-    if (event.key === "Enter" || event.keyCode === 13) {
-      onSave()
+    const isEnter = event.key === "Enter" || event.keyCode === 13;
+    if (isEnter) {
+      onSave();
     }
   };
   useEffect(() => {
@@ -46,7 +48,7 @@ const Modal = (props) => {
             className="edit-text title"
             placeholder="edit title"
             maxLength="50"
-            autoFocus={true}
+            autoFocus
             value={selectedTitle}
             onChange={handleChangeTitle}
             onKeyPress={() => onSaveKey(event)}
