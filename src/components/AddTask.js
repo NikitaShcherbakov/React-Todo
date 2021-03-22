@@ -17,9 +17,16 @@ const AddTask = () => {
             description: "",
             selectedColor
         };
+
+        const actionCreateItem = (newItem) => {
+            return { 
+              type: "CREATE_ITEM",
+              payload: newItem
+            }
+        }; 
         event.preventDefault();
         if (!!newItem.text.trim()) {
-            dispatch({ type: "CREATE_ITEM", payload: newItem});
+            dispatch(actionCreateItem(newItem));
           }
           inputRef.current.value = "";
           inputRef.current.focus();

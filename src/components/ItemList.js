@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dateOfCreation } from "../constants.js";
 
@@ -18,13 +18,18 @@ const ItemList = () => {
             return state.items.filter(Boolean);
         }
     }
-    const items = useSelector((state) => filterItems(state))
-    
+    const items = useSelector((state) => filterItems(state));
     const [isOpen, setOpen] = useState(true);
     const [selectedItem, setSelectedItem] = useState({});
 
+    const actionDeleteItem = (id) => {
+        return { 
+          type: "DELETE_ITEM",
+          payload: id
+        }
+    } 
     const deleteItem = (id) => {
-        dispatch({ type: "DELETE_ITEM", id });
+        dispatch(actionDeleteItem(id));
     }
     const isOpenModal = (index) => {
         setSelectedItem(items.find(item => item.id == index));
@@ -38,8 +43,14 @@ const ItemList = () => {
         selectedItem.selectedColor = itemMarker;
         selectedItem.description = description;
     }
+    const actionChecked = (id) => {
+        return { 
+          type: "CHECKED",
+          payload: id
+        }
+    } 
     const onCheck = (id) => {
-        dispatch({ type: "CHECKED", id });
+        dispatch(actionChecked(id));
     }
     return (
         <div className="box-item">

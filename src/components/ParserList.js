@@ -23,7 +23,13 @@ const ParserPage = () => {
           item["timestamp"] = Math.random().toString(36).slice(-5);
           return item;
         });
-        dispatch({ type: "PARSER_ITEM", payload: newArr });
+        const actionParserItem = (newArr) => {
+          return { 
+            type: "PARSER_ITEM",
+            payload: newArr
+          }
+        }   
+        dispatch(actionParserItem(newArr));
       });
     }
   }, []);
