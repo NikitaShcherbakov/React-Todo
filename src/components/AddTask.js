@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import TaskMarker from "./TaskMarker";
+import { createItem as actionCreateItem} from "../redux/Actions"
 
 
 const AddTask = () => {
@@ -17,13 +18,6 @@ const AddTask = () => {
             description: "",
             selectedColor
         };
-
-        const actionCreateItem = (newItem) => {
-            return { 
-              type: "CREATE_ITEM",
-              payload: newItem
-            }
-        }; 
         event.preventDefault();
         if (!!newItem.text.trim()) {
             dispatch(actionCreateItem(newItem));

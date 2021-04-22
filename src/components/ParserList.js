@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { getXmlAnswer } from "../service";
 import Loader from "./Loader";
 import Parser from "../Utils/Parser";
+import { ParserItem as actionParserItem} from "../redux/Actions"
 
 const ParserPage = () => {
   const dispatch = useDispatch();
@@ -11,26 +12,20 @@ const ParserPage = () => {
 
   useEffect(() => {
     if (itemList.length === 0) {
-      getXmlAnswer().then((date) => {
-        const parseNode = new Parser()
-          .parseFromString(date)
-          .children.filter((item) => item.name === "entry");
-        const newArr = parseNode.map(({ children }) => {
-          let item = {};
-          children.map(({ name, value }) => {
-            item[name] = value;
+        getXmlAnswer().then((date) => {
+          const parseNode = new Parser()
+            .parseFromString(date)
+            .children.filter((item) => item.name === "entry");
+          const newArr = parseNode.map(({ children }) => {
+            let item = {};
+            children.map(({ name, value }) => {
+              item[name] = value;
+            });
+            item["timestamp"] = Math.random().toString(36).slice(-5);
+            return item;
           });
-          item["timestamp"] = Math.random().toString(36).slice(-5);
-          return item;
+          dispatch(actionParserItem(newArr));
         });
-        const actionParserItem = (newArr) => {
-          return { 
-            type: "PARSER_ITEM",
-            payload: newArr
-          }
-        }   
-        dispatch(actionParserItem(newArr));
-      });
     }
   }, []);
   

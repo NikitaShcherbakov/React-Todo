@@ -1,6 +1,8 @@
-import React, { useState, useMemo} from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dateOfCreation } from "../constants.js";
+import { deleteItem as actionDeleteItem} from "../redux/Actions"
+import { Checked as actionChecked} from "../redux/Actions"
 
 import Modal from "./Modal";
 import Checkbox from "./Checkbox";
@@ -22,12 +24,6 @@ const ItemList = () => {
     const [isOpen, setOpen] = useState(true);
     const [selectedItem, setSelectedItem] = useState({});
 
-    const actionDeleteItem = (id) => {
-        return { 
-          type: "DELETE_ITEM",
-          payload: id
-        }
-    } 
     const deleteItem = (id) => {
         dispatch(actionDeleteItem(id));
     }
@@ -43,12 +39,6 @@ const ItemList = () => {
         selectedItem.selectedColor = itemMarker;
         selectedItem.description = description;
     }
-    const actionChecked = (id) => {
-        return { 
-          type: "CHECKED",
-          payload: id
-        }
-    } 
     const onCheck = (id) => {
         dispatch(actionChecked(id));
     }

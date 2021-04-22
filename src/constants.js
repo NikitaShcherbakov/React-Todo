@@ -13,13 +13,28 @@ const searchError = {
     code: 404,
     statusText: "Something went wrong"
 }
+const filterItems = ["All", "Checked", "Unchecked"];
 const date = new Date();
 const dateOfCreation = date.toJSON().slice(0,10).replace(/-/g,'/') + '/' + date.getHours() + ':' + date.getMinutes();
 
+let throwError = (error) => {
+    let responseCode = error.response.status;
+    let responseStatus = error.response.statusText;
+    let emptyStatus = "Status text did not come";
+    let status = responseStatus || emptyStatus;
+    let newError = new Object();
+    newError.description = `Something went wrong`;
+    newError.status = `StatusText: ${status}`;
+    newError.code = `Status: ${responseCode}`;
+    newError.url = `Url: ${url}`;
+    throw newError;
+}
 export {
     colors,
     url,
     queryOptions,
     searchError,
     dateOfCreation,
+    filterItems,
+    throwError
 };

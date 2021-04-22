@@ -14,7 +14,10 @@ const TaskMarker = (props) => {
         <div className="row-2">
             <div className="color-selection">
             {colors.map((color) => {
-                return <div style={{background: color}} className={props.selectedColor === color ? "item-marker checked" : "item-marker"} onClick={() => addLabel(color)} key={color}/>
+                return <div style={{background: color}} 
+                className={props.selectedColor === color ? "item-marker checked" : "item-marker"} 
+                onClick={() => addLabel(color)} 
+                key={color}/>
             })}
             </div>
         </div>
