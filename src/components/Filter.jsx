@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterItems } from "../constants";
-import { filterBy as actionFilterBy} from "../redux/Actions"
+import { filterBy as actionFilterBy } from "../redux/Actions";
 
 const Filter = () => {
   const allItemCounting = useSelector((state) => state.allItemCounting);
@@ -10,18 +10,18 @@ const Filter = () => {
 
   let itemStatusAndQuantity = [
     {
-      name: 'All',
-      value: allItemCounting
+      name: "All",
+      value: allItemCounting,
     },
     {
-    name: 'Checked',
-    value: allItemChecked
-  },
-  {
-    name: 'Unchecked',
-    value: allItemUnchecked
-  },
-]
+      name: "Checked",
+      value: allItemChecked,
+    },
+    {
+      name: "Unchecked",
+      value: allItemUnchecked,
+    },
+  ];
 
   const dispatch = useDispatch();
   const [activeFilter, setActiveFilter] = useState(filterItems[0]);
@@ -32,11 +32,14 @@ const Filter = () => {
   };
   return (
     <div className="box-switch">
-      {itemStatusAndQuantity.map(({name, value}) => (
+      {itemStatusAndQuantity.map(({ name, value }) => (
         <div
-          className={activeFilter === name ? "switch-task active" : "switch-task"}
+          className={
+            activeFilter === name ? "switch-task active" : "switch-task"
+          }
           onClick={() => onFilterItems(name)}
-          key={name + value}>
+          key={name + value}
+        >
           {name} : {value}
         </div>
       ))}

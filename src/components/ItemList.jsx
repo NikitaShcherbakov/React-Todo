@@ -17,7 +17,8 @@ const ItemList = () => {
             let isChecked = "Checked" === filterBy;
             return state.items.filter(c => c.checked === isChecked);
         } else {
-            return state.items.filter(Boolean);
+            // debugger;
+            return state.createItem.items.filter(Boolean);
         }
     }
     const items = useSelector((state) => filterItems(state));
